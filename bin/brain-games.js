@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-console.log("Hello World!");
+import askNameAndGreet from "../src/cli.js";
+
+askNameAndGreet();
