@@ -6,3 +6,6 @@ brain-games: # launch the game
 
 publish: # publish
 	 npm publish --dry-run
+
+lint: #configure eslint according to the specs from the .eslintrc.json file
+	npx eslint .

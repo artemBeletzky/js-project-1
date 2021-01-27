@@ -1,0 +1,17 @@
+name: eslint
+
+on: push
+
+jobs:
+  lint:
+# Confused with so many different names. Why do I need to use this property here?
+    name: Lint the code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+      - name: Launch makefile script
+        run: make lint
