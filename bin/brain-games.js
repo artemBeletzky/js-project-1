@@ -3,5 +3,3 @@
 import askNameAndGreet from '../src/cli.js';
 
 askNameAndGreet();
-
-
