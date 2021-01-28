@@ -14,6 +14,8 @@
   "rules": {
     "no-console": "off",
     "no-underscore-dangle": [2, { "allow": ["__filename", "__dirname"] }],
+    "comma-dangle": "off",
+    "no-use-before-define": ["error", { "functions": false }],
     "import/extensions": 0
   }
   //    "plugins": [
