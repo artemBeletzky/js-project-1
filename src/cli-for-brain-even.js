@@ -26,7 +26,7 @@ function askQuestions(name, inARow = 0) {
       process.exit();
     }
     if (checkIfBlank) {
-      console.log(`${name}, you forgot to enter the answer:( Starting over.`);
+      console.log(`${name}, you forgot to enter the answer:(`);
       return askQuestions(name, inARow);
     }
     if (result) {
