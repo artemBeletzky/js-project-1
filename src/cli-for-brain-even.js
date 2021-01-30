@@ -8,21 +8,35 @@ function askNameAndGreet() {
   askQuestions(name);
 }
 
-//  this function calls itself in case the user given a wrong answer
-function askQuestions(name, counter = 0) {
-  const defineRandomNumber = Math.floor(Math.random() * 101);
-  const defineTheCorrectAnswer = defineRandomNumber % 2 === 0 ? 'yes' : 'no';
-  console.log(`Question: ${defineRandomNumber}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  const result = defineTheCorrectAnswer === userAnswer;
-  if (result && counter < 3) {
-    console.log('Correct!');
-    askQuestions(name, counter + 1);
+// calls itself if inARow is less then 3
+// eslint-disable-next-line consistent-return
+function askQuestions(name, inARow = 0) {
+  if (inARow === 3) {
+    console.log(`Congratulations, ${name}! You've won the game!`);
+    process.exit(); // askNameAndGreet gets invoked again, if not process.exit()
   } else {
+    const defineRandomNumber = Math.ceil(Math.random() * 100);
+    const correctAnswer = defineRandomNumber % 2 === 0 ? 'yes' : 'no';
+    console.log(`Question: ${defineRandomNumber}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const result = correctAnswer === userAnswer;
+    const checkIfBlank = userAnswer.length === 0 || !userAnswer.trim();
+    if (userAnswer === 'exit') {
+      console.log('Bye-bye!');
+      process.exit();
+    }
+    if (checkIfBlank) {
+      console.log(`${name}, you forgot to enter the answer:( Starting over.`);
+      return askQuestions(name, inARow);
+    }
+    if (result) {
+      console.log('Correct! Moving on to the next one!');
+      return askQuestions(name, inARow + 1);
+    }
     console.log(
-      `${name}, your answer in incorrect. Answer correctly 3 times in a row to win this game. Let's start once again.`
+      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${name}!`
     );
-    askQuestions(name, counter);
+    return askQuestions(name, 0);
   }
 }
 
