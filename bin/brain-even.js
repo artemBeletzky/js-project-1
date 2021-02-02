@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import askNameAndGreet from '../src/cli-for-brain-even.js';
+import startTheGame from '../src/index.js';
+import brainEvenLogic from '../src/games/brain-even-logic.js';
 
-askNameAndGreet();
+startTheGame(brainEvenLogic);
