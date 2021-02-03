@@ -12,3 +12,4 @@ publish: # publish
 
 lint: #run eslint according to the specs from the .eslintrc.json file
 	npx eslint .
+

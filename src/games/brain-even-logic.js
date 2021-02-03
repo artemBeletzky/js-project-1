@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-function brainEvenLogic(inARow = 0) {
+function brainEvenLogic(name, inARow = 0) {
   if (inARow === 3) {
     return;
   }
@@ -9,21 +9,16 @@ function brainEvenLogic(inARow = 0) {
   console.log(`Question: ${defineRandomNumber}`);
   const userAnswer = readlineSync.question('Your answer: ');
   const result = correctAnswer === userAnswer;
-  //  if (userAnswer === 'exit') {
-  //  console.log('Bye-bye!');
-  //  process.exit();
-  //  }
-  //if (result && inARow <= 2) {
-  //  return brainEvenLogic(inARow + 1);
-  //}
   if (result && inARow <= 2) {
-    console.log('Correct! Moving on to the next one!');
-    return brainEvenLogic(inARow + 1);
+    console.log('Correct!');
+    //eslint-disable-next-line consistent-return
+    return brainEvenLogic(inARow + 1, name);
   }
   console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
+    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-  return brainEvenLogic(0);
+  //eslint-disable-next-line consistent-return
+  return brainEvenLogic(0, name);
 }
 
 export default brainEvenLogic;
