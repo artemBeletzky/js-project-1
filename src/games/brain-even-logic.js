@@ -12,13 +12,13 @@ function brainEvenLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     //eslint-disable-next-line consistent-return
-    return brainEvenLogic(inARow + 1, name);
+    return brainEvenLogic(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
   //eslint-disable-next-line consistent-return
-  return brainEvenLogic(0, name);
+  return brainEvenLogic(name, 0);
 }
 
 export default brainEvenLogic;

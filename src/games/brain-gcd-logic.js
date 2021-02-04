@@ -14,13 +14,13 @@ function brainGcdLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     //eslint-disable-next-line consistent-return
-    return brainGcdLogic(inARow + 1);
+    return brainGcdLogic(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
   //eslint-disable-next-line consistent-return
-  return brainGcdLogic(0);
+  return brainGcdLogic(name, 0);
 }
 
 function euclidsAlgo(a, b) {

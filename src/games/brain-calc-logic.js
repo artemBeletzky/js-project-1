@@ -16,13 +16,13 @@ function brainCalcLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     //eslint-disable-next-line consistent-return
-    return brainCalcLogic(inARow + 1);
+    return brainCalcLogic(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
   //eslint-disable-next-line consistent-return
-  return brainCalcLogic(0);
+  return brainCalcLogic(name, 0);
 }
 
 function composeAnExpression() {

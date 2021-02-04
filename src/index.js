@@ -4,6 +4,7 @@ const rules = {
   brainCalc: 'Answer "yes" if the number is even, otherwise answer "no".',
   brainEven: 'What is the result of the expression?',
   brainGcd: 'Find the greatest common divisor of given numbers.',
+  brainProgression: 'What number is missing in the progression?',
 };
 
 function startTheGame(gameLogic, gameTitle) {
