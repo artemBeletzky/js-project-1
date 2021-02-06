@@ -12,6 +12,7 @@ function brainCalcLogic(name, inARow = 0) {
   );
   const userAnswer = readlineSync.question('Your answer: ');
   // compare a string to a number
+  //eslint-disable-next-line eqeqeq
   const result = correctAnswer == userAnswer;
   if (result && inARow <= 2) {
     console.log('Correct!');

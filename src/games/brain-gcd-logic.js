@@ -10,6 +10,7 @@ function brainGcdLogic(name, inARow = 0) {
   console.log(`Question: ${randomNum1} ${randomNum2}`);
   const userAnswer = readlineSync.question('Your answer: ');
   // We compare a string to a number
+  //eslint-disable-next-line eqeqeq
   const result = correctAnswer == userAnswer;
   if (result && inARow <= 2) {
     console.log('Correct!');
