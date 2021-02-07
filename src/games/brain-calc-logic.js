@@ -5,7 +5,7 @@ function brainCalcLogic(name, inARow = 0) {
     return;
   }
   const operationObj = composeAnExpression();
-  const expressionString = `${operationObj.operand1}${operationObj.operator}${operationObj.operand2}`;
+  const expressionString = `${operationObj.operand1} ${operationObj.operator} ${operationObj.operand2}`;
   const correctAnswer = operationObj.answer;
   console.log(`Question: ${expressionString}`);
   const userAnswer = readlineSync.question('Your answer: ');
