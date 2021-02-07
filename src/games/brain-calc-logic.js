@@ -7,9 +7,7 @@ function brainCalcLogic(name, inARow = 0) {
   const operationObj = composeAnExpression();
   const expressionString = `${operationObj.operand1}${operationObj.operator}${operationObj.operand2}`;
   const correctAnswer = operationObj.answer;
-  console.log(
-    `What is the result of the expression?\n Question: ${expressionString}`
-  );
+  console.log(`Question: ${expressionString}`);
   const userAnswer = readlineSync.question('Your answer: ');
   // compare a string to a number
   //eslint-disable-next-line eqeqeq
