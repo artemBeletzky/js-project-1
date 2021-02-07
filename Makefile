@@ -1,11 +1,23 @@
 install: # run npm install
 	npm install
 
-brain-games: # launch the game
+brain-games:
 	node bin/brain-games.js
 
-brain-even: # launch the 2nd game
+brain-even:
 	node bin/brain-even.js
+
+brain-calc:
+	node bin/brain-calc.js
+
+brain-gcd:
+	node bin/brain-gcd.js
+
+brain-prime:
+	node bin/brain-prime.js
+
+brain-progression:
+	node bin/brain-progression.js
 
 publish: # publish
 	 npm publish --dry-run
