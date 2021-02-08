@@ -13,7 +13,7 @@ function brainEvenLogic(name, inARow = 0) {
   const result = correctAnswer === userAnswer;
   if (result && inARow <= 2) {
     console.log('Correct!');
-    //eslint-disable-next-line consistent-return
+    // eslint-disable-next-line consistent-return
     return brainEvenLogic(name, inARow + 1);
   }
   console.log(

@@ -8,6 +8,10 @@ const rules = {
   brainPrime: 'Answer "yes" if given number is prime. Otherwise answer "no".',
 };
 
+function announceRules(gameTitle) {
+  console.log(rules[gameTitle]);
+}
+
 function startTheGame(gameLogic, gameTitle) {
   const name = askNameAndGreet();
   announceRules(gameTitle);
@@ -15,10 +19,6 @@ function startTheGame(gameLogic, gameTitle) {
 }
 function congrats(name) {
   console.log(`Congratulations, ${name}!`);
-}
-
-function announceRules(gameTitle) {
-  console.log(rules[gameTitle]);
 }
 
 export { startTheGame, congrats };

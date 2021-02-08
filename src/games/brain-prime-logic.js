@@ -1,6 +1,19 @@
 import readlineSync from 'readline-sync';
 import { congrats } from '../index.js';
 
+function isPrime(n) {
+  if (n <= 0 || n === 1) {
+    return false;
+  }
+  let counter = n - 1;
+  let result = false;
+  while (counter > 1 && result !== true) {
+    result = n % counter === 0;
+    counter -= 1;
+  }
+  return !result;
+}
+
 function brainPrimeLogic(name, inARow = 0) {
   if (inARow === 3) {
     congrats(name);
@@ -14,25 +27,12 @@ function brainPrimeLogic(name, inARow = 0) {
   const result = correctAnswer === userAnswer;
   if (result && inARow <= 2) {
     console.log('Correct!');
-    //eslint-disable-next-line consistent-return
+    // eslint-disable-next-line consistent-return
     return brainPrimeLogic(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-}
-
-function isPrime(n) {
-  if (n <= 0 || n === 1) {
-    return false;
-  }
-  let counter = n - 1;
-  let result = false;
-  while (counter > 1 && result !== true) {
-    result = n % counter === 0;
-    counter -= 1;
-  }
-  return !result;
 }
 
 export default brainPrimeLogic;
