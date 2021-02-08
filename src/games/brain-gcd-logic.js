@@ -1,7 +1,9 @@
 import readlineSync from 'readline-sync';
+import { congrats } from '../index.js';
 
 function brainGcdLogic(name, inARow = 0) {
   if (inARow === 3) {
+    congrats(name);
     return;
   }
   const randomNum1 = Math.ceil(Math.random() * 100);
@@ -20,8 +22,6 @@ function brainGcdLogic(name, inARow = 0) {
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-  //eslint-disable-next-line consistent-return
-  return brainGcdLogic(name, 0);
 }
 
 function euclidsAlgo(a, b) {

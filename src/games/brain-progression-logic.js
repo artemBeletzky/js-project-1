@@ -1,12 +1,15 @@
 import readlineSync from 'readline-sync';
+import { congrats } from '../index.js';
 
 function brainProgressionLogic(name, inARow = 0) {
   if (inARow === 3) {
+    congrats(name);
     return;
   }
   const gameData = generateProgression();
   const correctAnswer = gameData[1];
-  console.log(`Question: ${gameData[0]}`);
+  const question = gameData[0].join(' ');
+  console.log(`Question: ${question}`);
   const userAnswer = readlineSync.question('Your answer: ');
   // We compare a string to a number
   //eslint-disable-next-line eqeqeq
@@ -19,8 +22,6 @@ function brainProgressionLogic(name, inARow = 0) {
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-  //eslint-disable-next-line consistent-return
-  return brainProgressionLogic(name, 0);
 }
 
 function generateProgression() {

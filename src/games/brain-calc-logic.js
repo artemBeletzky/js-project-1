@@ -1,7 +1,9 @@
 import readlineSync from 'readline-sync';
+import { congrats } from '../index.js';
 
 function brainCalcLogic(name, inARow = 0) {
   if (inARow === 3) {
+    congrats(name);
     return;
   }
   const operationObj = composeAnExpression();
@@ -20,8 +22,6 @@ function brainCalcLogic(name, inARow = 0) {
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-  //eslint-disable-next-line consistent-return
-  return brainCalcLogic(name, 0);
 }
 
 function composeAnExpression() {
