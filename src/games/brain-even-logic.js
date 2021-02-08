@@ -1,7 +1,9 @@
 import readlineSync from 'readline-sync';
+import { congrats } from '../index.js';
 
 function brainEvenLogic(name, inARow = 0) {
   if (inARow === 3) {
+    congrats(name);
     return;
   }
   const defineRandomNumber = Math.ceil(Math.random() * 100);
@@ -17,8 +19,6 @@ function brainEvenLogic(name, inARow = 0) {
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
   );
-  //eslint-disable-next-line consistent-return
-  return brainEvenLogic(name, 0);
 }
 
 export default brainEvenLogic;

@@ -8,12 +8,10 @@ const rules = {
   brainPrime: 'Answer "yes" if given number is prime. Otherwise answer "no".',
 };
 
-// gets exported and then gets invoked inside the index.js module
 function startTheGame(gameLogic, gameTitle) {
   const name = askNameAndGreet();
   announceRules(gameTitle);
   gameLogic(name);
-  congrats(name);
 }
 function congrats(name) {
   console.log(`Congratulations, ${name}!`);
@@ -23,4 +21,4 @@ function announceRules(gameTitle) {
   console.log(rules[gameTitle]);
 }
 
-export default startTheGame;
+export { startTheGame, congrats };
