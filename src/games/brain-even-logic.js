@@ -17,7 +17,7 @@ function brainEvenLogic(name, inARow = 0) {
     return brainEvenLogic(name, inARow + 1);
   }
   console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
+    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
   );
 }
 
