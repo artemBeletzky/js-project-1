@@ -6,6 +6,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://github.com/artemBeletzky/frontend-project-lvl1)
 
+ASCIINEMA:
+
 [![asciicast](https://asciinema.org/a/ApcJnpruC8D7LbGNwVgdwFyHD.svg)](https://asciinema.org/a/ApcJnpruC8D7LbGNwVgdwFyHD)
 
 [![asciicast](https://asciinema.org/a/MhCfcF2k3JElOxLfOJmyfh9Qa.svg)](https://asciinema.org/a/MhCfcF2k3JElOxLfOJmyfh9Qa)
