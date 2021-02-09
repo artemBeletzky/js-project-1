@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
+          with:
+            node-version: '13'
       - name: install devDependencies
         run: npm install
       - name: Launch makefile script
