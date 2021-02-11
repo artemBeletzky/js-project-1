@@ -17,8 +17,8 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: '13'
+          node-version: '14'
       - name: install devDependencies
-        run: npm install
+        run: make install
       - name: Launch makefile script
         run: make lint
