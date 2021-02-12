@@ -12,7 +12,7 @@ function announceRules(gameTitle) {
   console.log(rules[gameTitle]);
 }
 
-function startTheGame(gameLogic, gameTitle) {
+function start(gameLogic, gameTitle) {
   const name = askNameAndGreet();
   announceRules(gameTitle);
   gameLogic(name);
@@ -21,4 +21,4 @@ function congrats(name) {
   console.log(`Congratulations, ${name}!`);
 }
 
-export { startTheGame, congrats };
+export { start, congrats };

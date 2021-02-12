@@ -14,7 +14,7 @@ function isPrime(n) {
   return !result;
 }
 
-function brainPrimeLogic(name, inARow = 0) {
+function prime(name, inARow = 0) {
   if (inARow === 3) {
     congrats(name);
     return;
@@ -28,11 +28,11 @@ function brainPrimeLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     // eslint-disable-next-line consistent-return
-    return brainPrimeLogic(name, inARow + 1);
+    return prime(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
   );
 }
 
-export default brainPrimeLogic;
+export default prime;

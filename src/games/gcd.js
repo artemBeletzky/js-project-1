@@ -11,7 +11,7 @@ function euclidsAlgo(a, b) {
   return euclidsAlgo(remainder, smaller);
 }
 
-function brainGcdLogic(name, inARow = 0) {
+function gcd(name, inARow = 0) {
   if (inARow === 3) {
     congrats(name);
     return;
@@ -27,11 +27,11 @@ function brainGcdLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     // eslint-disable-next-line consistent-return
-    return brainGcdLogic(name, inARow + 1);
+    return gcd(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
   );
 }
 
-export default brainGcdLogic;
+export default gcd;

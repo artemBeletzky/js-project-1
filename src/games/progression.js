@@ -19,7 +19,7 @@ function generateProgression() {
   return [progressionArr, answer];
 }
 
-function brainProgressionLogic(name, inARow = 0) {
+function progression(name, inARow = 0) {
   if (inARow === 3) {
     congrats(name);
     return;
@@ -35,11 +35,11 @@ function brainProgressionLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     // eslint-disable-next-line consistent-return
-    return brainProgressionLogic(name, inARow + 1);
+    return progression(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
   );
 }
 
-export default brainProgressionLogic;
+export default progression;

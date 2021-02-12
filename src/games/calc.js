@@ -19,7 +19,7 @@ function composeAnExpression() {
   };
 }
 
-function brainCalcLogic(name, inARow = 0) {
+function calc(name, inARow = 0) {
   if (inARow === 3) {
     congrats(name);
     return;
@@ -35,11 +35,11 @@ function brainCalcLogic(name, inARow = 0) {
   if (result && inARow <= 2) {
     console.log('Correct!');
     // eslint-disable-next-line consistent-return
-    return brainCalcLogic(name, inARow + 1);
+    return calc(name, inARow + 1);
   }
   console.log(
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
   );
 }
 
-export default brainCalcLogic;
+export default calc;
