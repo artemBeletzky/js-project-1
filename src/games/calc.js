@@ -1,45 +1,64 @@
 import readlineSync from 'readline-sync';
-import { congrats } from '../index.js';
 
-function composeAnExpression() {
+const calcGameData = {
+  greetAndGetName,
+  gameRules: 'What is the result of the expression?',
+  createQuestion: composeExpressionStr,
+  solve: parse,
+  askQuestions,
+  greetOrTryAgain,
+};
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
+}
+
+function composeExpressionStr() {
   const randNum1 = Math.round(Math.random() * 99);
   const randNum2 = Math.round(Math.random() * 99);
-  const listOfOp = ['+', '-', '*'];
-  const chooseOp = listOfOp[Math.floor(Math.random() * 3)];
-  const performOperation = {
-    '+': (num1, num2) => num1 + num2,
-    '-': (num1, num2) => num1 - num2,
-    '*': (num1, num2) => num1 * num2,
-  };
-  return {
-    answer: performOperation[chooseOp](randNum1, randNum2),
-    operand1: randNum1,
-    operand2: randNum2,
-    operator: chooseOp,
-  };
+  const operations = ['+', '-', '*'];
+  const randIndex = Math.floor(Math.random() * 3);
+  return `${randNum1} ${operations[randIndex]} ${randNum2}`;
 }
 
-function calc(name, inARow = 0) {
-  if (inARow === 3) {
-    congrats(name);
-    return;
-  }
-  const operationObj = composeAnExpression();
-  const expressionString = `${operationObj.operand1} ${operationObj.operator} ${operationObj.operand2}`;
-  const correctAnswer = operationObj.answer;
-  console.log(`Question: ${expressionString}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  // compare a string to a number
-  // eslint-disable-next-line eqeqeq
-  const result = correctAnswer == userAnswer;
-  if (result && inARow <= 2) {
-    console.log('Correct!');
-    // eslint-disable-next-line consistent-return
-    return calc(name, inARow + 1);
-  }
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`,
-  );
+function parse(str) {
+  return Function(`'use strict'; return (${str})`)();
 }
 
-export default calc;
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
+}
+
+function askQuestions() {
+  let counter = 0;
+  while (counter < 3) {
+    const createQuestion = composeExpressionStr();
+    const defineCorrectAnswer = parse(createQuestion);
+    console.log(`Question: ${createQuestion}`);
+    const getUserAnswer = readlineSync.question('Your answer: ');
+    if (defineCorrectAnswer == getUserAnswer) {
+      console.log('Correct!');
+      counter += 1;
+      if (counter === 3) {
+        return {
+          result: 'won',
+        };
+      }
+    } else {
+      return {
+        correctAns: defineCorrectAnswer,
+        wrongAns: getUserAnswer,
+        result: 'lost',
+      };
+    }
+  }
+}
+
+export default calcGameData;

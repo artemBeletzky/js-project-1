@@ -1,24 +1,16 @@
-import askNameAndGreet from './cli.js';
-
-const rules = {
-  brainCalc: 'What is the result of the expression?',
-  brainEven: 'Answer "yes" if the number is even, otherwise answer "no".',
-  brainGcd: 'Find the greatest common divisor of given numbers.',
-  brainProgression: 'What number is missing in the progression?',
-  brainPrime: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-};
-
-function announceRules(gameTitle) {
-  console.log(rules[gameTitle]);
+function start(gameDataObj) {
+  const name = gameDataObj.greetAndGetName();
+  console.log(gameDataObj.gameRules);
+  const gameResult = gameDataObj.askQuestions();
+  gameDataObj.greetOrTryAgain(gameResult, name);
 }
 
-function start(gameLogic, gameTitle) {
-  const name = askNameAndGreet();
-  announceRules(gameTitle);
-  gameLogic(name);
-}
-function congrats(name) {
-  console.log(`Congratulations, ${name}!`);
-}
+export default start;
 
-export { start, congrats };
+// const rules = {
+//
+//   brainEven: 'Answer "yes" if the number is even, otherwise answer "no".',
+//   brainGcd: 'Find the greatest common divisor of given numbers.',
+//   brainProgression: 'What number is missing in the progression?',
+//   brainPrime: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+// };
