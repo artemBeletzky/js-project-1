@@ -35,10 +35,9 @@ function getUsrAnswer() {
 }
 
 function greetOrTryAgain(gameResultObj, name) {
-  const phrase =
-    gameResultObj.result === 'won'
-      ? `Congratulations, ${name}!`
-      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  const phrase = gameResultObj.result === 'won'
+    ? `Congratulations, ${name}!`
+    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
 

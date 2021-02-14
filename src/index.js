@@ -8,10 +8,9 @@ function start(gameDataObj) {
       const question = gameDataObj.createQuestion();
       // only if formatting is needed
       // NEEDS ADJUSTMENTS, NO NEED TO RETURN AN OBJECT WE ONLY FORMAT IT FOR A USER
-      const formattedQuestion =
-        gameDataObj.formatQuestionForUser !== undefined
-          ? gameDataObj.formatQuestionForUser(question).formattedForUsr
-          : question;
+      const formattedQuestion = gameDataObj.formatQuestionForUser !== undefined
+        ? gameDataObj.formatQuestionForUser(question).formattedForUsr
+        : question;
       // only if formatting is needed
       const expectedAnswer = gameDataObj.formatExpectedAns
         ? gameDataObj.formatExpectedAns(gameDataObj.solve(question))
