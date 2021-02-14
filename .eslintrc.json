@@ -17,8 +17,6 @@
     "no-use-before-define": ["error", { "functions": false }],
     "import/extensions": 0,
     "spaced-comment": "off",
-    "func-names": "off",
-    "consistent-return": "off",
-    "eqeqeq": "off"
+    "func-names": "off"
   }
 }

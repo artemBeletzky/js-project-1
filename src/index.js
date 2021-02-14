@@ -1,6 +1,7 @@
 function start(gameDataObj) {
   const name = gameDataObj.greetAndGetName();
   console.log(gameDataObj.gameRules);
+  // eslint-disable-next-line consistent-return
   const result = (function () {
     let counter = 0;
     while (counter < 3) {
@@ -13,6 +14,7 @@ function start(gameDataObj) {
         : gameDataObj.solve(question);
       console.log(`Question: ${formattedQuestion}`);
       const userAnswer = gameDataObj.getUsrAnswer();
+      // eslint-disable-next-line eqeqeq
       if (expectedAnswer == userAnswer) {
         console.log('Correct!');
         counter += 1;
