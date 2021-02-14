@@ -18,11 +18,13 @@ function start(gameDataObj) {
       counter += 1;
       if (counter === 3) {
         console.log(`Congratulations, ${name}!`);
+        return;
       }
     } else {
       console.log(
         `'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`
       );
+      return;
     }
   }
 }
