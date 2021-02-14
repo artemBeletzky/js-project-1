@@ -22,7 +22,7 @@ function start(gameDataObj) {
       }
     } else {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`,
       );
       return;
     }
