@@ -34,7 +34,7 @@ function start(gameDataObj) {
         };
       }
     }
-  })();
+  }());
   gameDataObj.greetOrTryAgain(result, name);
 }
 

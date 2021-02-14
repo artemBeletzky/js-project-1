@@ -31,7 +31,7 @@ function formatQuestionForUser(question) {
     notFormatted: question,
   };
 }
-//maybe it's better to actually solve it?
+// maybe it's better to actually solve it?
 function extractAnswer(question) {
   return question[1];
 }
