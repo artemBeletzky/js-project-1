@@ -1,24 +1,54 @@
 import readlineSync from 'readline-sync';
-import { congrats } from '../index.js';
 
-function even(name, inARow = 0) {
-  if (inARow === 3) {
-    congrats(name);
-    return;
-  }
-  const defineRandomNumber = Math.ceil(Math.random() * 100);
-  const correctAnswer = defineRandomNumber % 2 === 0 ? 'yes' : 'no';
-  console.log(`Question: ${defineRandomNumber}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  const result = correctAnswer === userAnswer;
-  if (result && inARow <= 2) {
-    console.log('Correct!');
-    // eslint-disable-next-line consistent-return
-    return even(name, inARow + 1);
-  }
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
-  );
+const evenGameData = {
+  greetAndGetName,
+  gameRules: 'Answer "yes" if the number is even, otherwise answer "no".',
+  createQuestion: createRandomNum,
+  formatQuestionStr,
+  solve: checkIfEven,
+  defineExpected,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
 }
 
-export default even;
+function createRandomNum() {
+  const num = Math.ceil(Math.random() * 100);
+  return num;
+}
+
+// do i need that?
+function formatQuestionStr(question) {
+  return {
+    formattedForUsr: question,
+    notFormatted: question,
+  };
+}
+
+function defineExpected(isEven) {
+  return isEven === true ? 'yes' : 'no';
+}
+
+function checkIfEven(number) {
+  return number % 2 === 0;
+}
+
+function getUsrAnswer() {
+  const answer = readlineSync.question('Your answer: ');
+  return answer;
+}
+
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase = gameResultObj.result === 'won'
+    ? `Congratulations, ${name}!`
+    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
+}
+
+export default evenGameData;

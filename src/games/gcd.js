@@ -1,37 +1,78 @@
 import readlineSync from 'readline-sync';
-import { congrats } from '../index.js';
 
-function euclidsAlgo(a, b) {
+const gcdGameData = {
+  greetAndGetName,
+  gameRules: 'Find the greatest common divisor of given numbers.',
+  createQuestion: createTwoRandNums,
+  defineAnswer: euclidsAlgo,
+  readAnswer,
+  greetOrTryAgain,
+};
+
+function readAnswer() {
+  const answer = readlineSync.question('Your answer: ');
+  return answer;
+}
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
+}
+
+function createTwoRandNums() {
+  const a = Math.round(Math.random() * 99);
+  const b = Math.round(Math.random() * 99);
+}
+
+function formatQuestion() {
+  return {
+    formattedForUsr: `${a} ${b}`,
+    notFormatted: [a, b],
+  };
+}
+
+function euclidsAlgo([a, b]) {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
   const remainder = bigger - smaller;
   if (remainder % smaller <= 0) {
     return smaller;
   }
-  return euclidsAlgo(remainder, smaller);
+  return euclidsAlgo([remainder, smaller]);
 }
 
-function gcd(name, inARow = 0) {
-  if (inARow === 3) {
-    congrats(name);
-    return;
-  }
-  const randomNum1 = Math.ceil(Math.random() * 100);
-  const randomNum2 = Math.ceil(Math.random() * 100);
-  const correctAnswer = euclidsAlgo(randomNum1, randomNum2);
-  console.log(`Question: ${randomNum1} ${randomNum2}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  // We compare a string to a number
-  // eslint-disable-next-line eqeqeq
-  const result = correctAnswer == userAnswer;
-  if (result && inARow <= 2) {
-    console.log('Correct!');
-    // eslint-disable-next-line consistent-return
-    return gcd(name, inARow + 1);
-  }
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
-  );
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase = gameResultObj.result === 'won'
+    ? `Congratulations, ${name}!`
+    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
 }
 
-export default gcd;
+// function askQuestions() {
+//   let counter = 0;
+//   while (counter < 3) {
+//     const question = createTwoRandNums();
+//     const expectedAnswer = euclidsAlgo(question);
+//     console.log(`Question: ${question.join(' ')}`);
+//     const userAnswer = readlineSync.question('Your answer: ');
+//     if (expectedAnswer == userAnswer) {
+//       console.log('Correct!');
+//       counter += 1;
+//       if (counter === 3) {
+//         return {
+//           result: 'won',
+//         };
+//       }
+//     } else {
+//       return {
+//         correctAns: expectedAnswer,
+//         wrongAns: userAnswer,
+//         result: 'lost',
+//       };
+//     }
+//   }
+// }
+
+export default gcdGameData;

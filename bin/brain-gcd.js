@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import gcd from '../src/games/gcd.js';
-import { start } from '../src/index.js';
+import gcdGameData from '../src/games/gcd.js';
+import start from '../src/index.js';
 
-start(gcd, 'brainGcd');
+start(gcdGameData);

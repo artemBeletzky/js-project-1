@@ -1,5 +1,4 @@
 import readlineSync from 'readline-sync';
-import { congrats } from '../index.js';
 
 function isPrime(n) {
   if (n <= 0 || n === 1) {

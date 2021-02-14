@@ -4,8 +4,10 @@ const calcGameData = {
   greetAndGetName,
   gameRules: 'What is the result of the expression?',
   createQuestion: composeExpressionStr,
+  formatQuestionStr: undefined,
+  defineExpectedAns: undefined,
   solve: parse,
-  askQuestions,
+  getUsrAnswer,
   greetOrTryAgain,
 };
 
@@ -24,41 +26,32 @@ function composeExpressionStr() {
   return `${randNum1} ${operations[randIndex]} ${randNum2}`;
 }
 
+// no need, delete it later
+// function formatQuestionStr(question) {
+//   return {
+//     formattedForUsr: question,
+//     notFormatted: question,
+//   };
+// }
+
+// function defineExpected(isEven) {
+//   return isEven === true ? 'yes' : 'no';
+// }
+
 function parse(str) {
   return Function(`'use strict'; return (${str})`)();
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase =
-    gameResultObj.result === 'won'
-      ? `Congratulations, ${name}!`
-      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
+function getUsrAnswer() {
+  const answer = readlineSync.question('Your answer: ');
+  return answer;
 }
 
-function askQuestions() {
-  let counter = 0;
-  while (counter < 3) {
-    const createQuestion = composeExpressionStr();
-    const defineCorrectAnswer = parse(createQuestion);
-    console.log(`Question: ${createQuestion}`);
-    const getUserAnswer = readlineSync.question('Your answer: ');
-    if (defineCorrectAnswer == getUserAnswer) {
-      console.log('Correct!');
-      counter += 1;
-      if (counter === 3) {
-        return {
-          result: 'won',
-        };
-      }
-    } else {
-      return {
-        correctAns: defineCorrectAnswer,
-        wrongAns: getUserAnswer,
-        result: 'lost',
-      };
-    }
-  }
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase = gameResultObj.result === 'won'
+    ? `Congratulations, ${name}!`
+    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
 }
 
 export default calcGameData;
