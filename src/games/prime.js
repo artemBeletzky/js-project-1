@@ -32,13 +32,6 @@ function getUsrAnswer() {
   return readlineSync.question('Your answer: ');
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
-}
-
 const primeGameData = {
   greetAndGetName,
   gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
@@ -47,7 +40,6 @@ const primeGameData = {
   formatExpectedAns,
   solve: isPrime,
   getUsrAnswer,
-  greetOrTryAgain,
 };
 
 export default primeGameData;

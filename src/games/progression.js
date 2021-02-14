@@ -37,13 +37,6 @@ function getUsrAnswer() {
   return readlineSync.question('Your answer: ');
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
-}
-
 const progressionGameData = {
   greetAndGetName,
   gameRules: 'What number is missing in the progression?',
@@ -52,7 +45,6 @@ const progressionGameData = {
   formatExpectedAns: undefined,
   solve: extractAnswer,
   getUsrAnswer,
-  greetOrTryAgain,
 };
 
 export default progressionGameData;

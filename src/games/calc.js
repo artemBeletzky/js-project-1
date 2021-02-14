@@ -24,13 +24,6 @@ function getUsrAnswer() {
   return readlineSync.question('Your answer: ');
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
-}
-
 const calcGameData = {
   greetAndGetName,
   gameRules: 'What is the result of the expression?',
@@ -39,7 +32,6 @@ const calcGameData = {
   formatExpectedAns: undefined,
   solve: parse,
   getUsrAnswer,
-  greetOrTryAgain,
 };
 
 export default calcGameData;

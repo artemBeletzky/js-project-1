@@ -32,13 +32,6 @@ function getUsrAnswer() {
   return readlineSync.question('Your answer: ');
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
-}
-
 const gcdGameData = {
   greetAndGetName,
   gameRules: 'Find the greatest common divisor of given numbers.',
@@ -47,7 +40,6 @@ const gcdGameData = {
   formatExpectedAns: undefined,
   solve: euclidsAlgo,
   getUsrAnswer,
-  greetOrTryAgain,
 };
 
 export default gcdGameData;
