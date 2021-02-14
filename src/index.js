@@ -21,9 +21,7 @@ function start(gameDataObj) {
         return;
       }
     } else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`,
-      );
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`);
       return;
     }
   }
