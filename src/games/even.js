@@ -1,16 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const evenGameData = {
-  greetAndGetName,
-  gameRules: 'Answer "yes" if the number is even, otherwise answer "no".',
-  createQuestion: createRandomNum,
-  formatQuestionStr: undefined,
-  solve: checkIfEven,
-  formatExpectedAns,
-  getUsrAnswer,
-  greetOrTryAgain,
-};
-
 function greetAndGetName() {
   console.log('Welcome To The Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -40,5 +29,16 @@ function greetOrTryAgain(gameResultObj, name) {
     : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
+
+const evenGameData = {
+  greetAndGetName,
+  gameRules: 'Answer "yes" if the number is even, otherwise answer "no".',
+  createQuestion: createRandomNum,
+  formatQuestionStr: undefined,
+  solve: checkIfEven,
+  formatExpectedAns,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
 
 export default evenGameData;

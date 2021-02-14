@@ -1,16 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const primeGameData = {
-  greetAndGetName,
-  gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-  createQuestion: createRandomNum,
-  formatQuestionForUser: undefined,
-  formatExpectedAns,
-  solve: isPrime,
-  getUsrAnswer,
-  greetOrTryAgain,
-};
-
 function greetAndGetName() {
   console.log('Welcome To The Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -49,5 +38,16 @@ function greetOrTryAgain(gameResultObj, name) {
     : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
+
+const primeGameData = {
+  greetAndGetName,
+  gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  createQuestion: createRandomNum,
+  formatQuestionForUser: undefined,
+  formatExpectedAns,
+  solve: isPrime,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
 
 export default primeGameData;

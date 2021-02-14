@@ -1,16 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const gcdGameData = {
-  greetAndGetName,
-  gameRules: 'Find the greatest common divisor of given numbers.',
-  createQuestion: createTwoRandNums,
-  formatQuestionForUser,
-  formatExpectedAns: undefined,
-  solve: euclidsAlgo,
-  getUsrAnswer,
-  greetOrTryAgain,
-};
-
 function greetAndGetName() {
   console.log('Welcome To The Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -52,5 +41,16 @@ function greetOrTryAgain(gameResultObj, name) {
     : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
+
+const gcdGameData = {
+  greetAndGetName,
+  gameRules: 'Find the greatest common divisor of given numbers.',
+  createQuestion: createTwoRandNums,
+  formatQuestionForUser,
+  formatExpectedAns: undefined,
+  solve: euclidsAlgo,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
 
 export default gcdGameData;

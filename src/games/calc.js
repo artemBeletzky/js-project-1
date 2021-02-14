@@ -1,16 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const calcGameData = {
-  greetAndGetName,
-  gameRules: 'What is the result of the expression?',
-  createQuestion: composeExpressionStr,
-  formatQuestionForUser: undefined,
-  formatExpectedAns: undefined,
-  solve: parse,
-  getUsrAnswer,
-  greetOrTryAgain,
-};
-
 function greetAndGetName() {
   console.log('Welcome To The Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -41,5 +30,16 @@ function greetOrTryAgain(gameResultObj, name) {
     : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
+
+const calcGameData = {
+  greetAndGetName,
+  gameRules: 'What is the result of the expression?',
+  createQuestion: composeExpressionStr,
+  formatQuestionForUser: undefined,
+  formatExpectedAns: undefined,
+  solve: parse,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
 
 export default calcGameData;
