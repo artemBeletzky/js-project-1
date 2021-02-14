@@ -15,10 +15,7 @@ function createTwoRandNums() {
 
 function formatQuestionForUser(question) {
   const [a, b] = question;
-  return {
-    formattedForUsr: `${a} ${b}`,
-    notFormatted: question,
-  };
+  return `${a} ${b}`;
 }
 
 function euclidsAlgo([a, b]) {

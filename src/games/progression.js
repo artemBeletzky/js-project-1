@@ -26,10 +26,7 @@ function generateProgression() {
 }
 
 function formatQuestionForUser(question) {
-  return {
-    formattedForUsr: question[0].join(' '),
-    notFormatted: question,
-  };
+  return question[0].join(' ');
 }
 // maybe it's better to actually solve it?
 function extractAnswer(question) {
