@@ -1,5 +1,23 @@
 import readlineSync from 'readline-sync';
 
+const progressionGameData = {
+  greetAndGetName,
+  gameRules: 'What number is missing in the progression?',
+  createQuestion: generateProgression,
+  formatQuestionForUser,
+  formatExpectedAns: undefined,
+  solve: extractAnswer,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
+}
+
 function generateProgression() {
   const generateStart = Math.floor(Math.random() * 90);
   const generateLength = Math.round(Math.random() * (30 - 20) + 20);
@@ -18,27 +36,27 @@ function generateProgression() {
   return [progressionArr, answer];
 }
 
-function progression(name, inARow = 0) {
-  if (inARow === 3) {
-    congrats(name);
-    return;
-  }
-  const gameData = generateProgression();
-  const correctAnswer = gameData[1];
-  const question = gameData[0].join(' ');
-  console.log(`Question: ${question}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  // We compare a string to a number so it's "=="
-  // eslint-disable-next-line eqeqeq
-  const result = correctAnswer == userAnswer;
-  if (result && inARow <= 2) {
-    console.log('Correct!');
-    // eslint-disable-next-line consistent-return
-    return progression(name, inARow + 1);
-  }
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
-  );
+function formatQuestionForUser(question) {
+  return {
+    formattedForUsr: question[0].join(' '),
+    notFormatted: question,
+  };
+}
+//maybe it's better to actually solve it?
+function extractAnswer(question) {
+  return question[1];
 }
 
-export default progression;
+function getUsrAnswer() {
+  return readlineSync.question('Your answer: ');
+}
+
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
+}
+
+export default progressionGameData;

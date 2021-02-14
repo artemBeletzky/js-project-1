@@ -1,20 +1,24 @@
 function start(gameDataObj) {
   const name = gameDataObj.greetAndGetName();
   console.log(gameDataObj.gameRules);
+  // eslint-disable-next-line consistent-return
   const result = (function () {
     let counter = 0;
     while (counter < 3) {
       const question = gameDataObj.createQuestion();
-      const formattedQuestion = gameDataObj.formatQuestionStr !== undefined
-        ? gameDataObj.formatQuestionStr(question)
-        : question;
       // only if formatting is needed
-      const expectedAnswer = gameDataObj.defineExpectedAns
-        ? gameDataObj.defineExpectedAns(gameDataObj.solve(question))
+      // NEEDS ADJUSTMENTS, NO NEED TO RETURN AN OBJECT WE ONLY FORMAT IT FOR A USER
+      const formattedQuestion =
+        gameDataObj.formatQuestionForUser !== undefined
+          ? gameDataObj.formatQuestionForUser(question).formattedForUsr
+          : question;
+      // only if formatting is needed
+      const expectedAnswer = gameDataObj.formatExpectedAns
+        ? gameDataObj.formatExpectedAns(gameDataObj.solve(question))
         : gameDataObj.solve(question);
-      console.log(`Question: ${formattedQuestion.formattedForUsr || formattedQuestion}`);
+      console.log(`Question: ${formattedQuestion}`);
       const userAnswer = gameDataObj.getUsrAnswer();
-      // noinspection EqualityComparisonWithCoercionJS
+      // eslint-disable-next-line eqeqeq
       if (expectedAnswer == userAnswer) {
         console.log('Correct!');
         counter += 1;
@@ -31,7 +35,7 @@ function start(gameDataObj) {
         };
       }
     }
-  }());
+  })();
   gameDataObj.greetOrTryAgain(result, name);
 }
 

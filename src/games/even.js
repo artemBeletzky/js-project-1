@@ -4,9 +4,9 @@ const evenGameData = {
   greetAndGetName,
   gameRules: 'Answer "yes" if the number is even, otherwise answer "no".',
   createQuestion: createRandomNum,
-  formatQuestionStr,
+  formatQuestionStr: undefined,
   solve: checkIfEven,
-  defineExpected,
+  formatExpectedAns,
   getUsrAnswer,
   greetOrTryAgain,
 };
@@ -19,20 +19,11 @@ function greetAndGetName() {
 }
 
 function createRandomNum() {
-  const num = Math.ceil(Math.random() * 100);
-  return num;
+  return Math.ceil(Math.random() * 100);
 }
 
-// do i need that?
-function formatQuestionStr(question) {
-  return {
-    formattedForUsr: question,
-    notFormatted: question,
-  };
-}
-
-function defineExpected(isEven) {
-  return isEven === true ? 'yes' : 'no';
+function formatExpectedAns(boolean) {
+  return boolean ? 'yes' : 'no';
 }
 
 function checkIfEven(number) {
@@ -40,14 +31,14 @@ function checkIfEven(number) {
 }
 
 function getUsrAnswer() {
-  const answer = readlineSync.question('Your answer: ');
-  return answer;
+  return readlineSync.question('Your answer: ');
 }
 
 function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
 

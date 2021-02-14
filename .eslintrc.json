@@ -5,7 +5,6 @@
   },
   "extends": [
     "airbnb-base"
-    //        "plugin:jest/all"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
@@ -17,9 +16,9 @@
     "comma-dangle": "off",
     "no-use-before-define": ["error", { "functions": false }],
     "import/extensions": 0,
-    "spaced-comment": "off"
+    "spaced-comment": "off",
+    "operator-linebreak": "off",
+    "wrap-iife": "off",
+    "func-names": "off"
   }
-  //    "plugins": [
-  //        "jest"
-  //    ]
 }

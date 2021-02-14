@@ -4,15 +4,12 @@ const gcdGameData = {
   greetAndGetName,
   gameRules: 'Find the greatest common divisor of given numbers.',
   createQuestion: createTwoRandNums,
-  defineAnswer: euclidsAlgo,
-  readAnswer,
+  formatQuestionForUser,
+  formatExpectedAns: undefined,
+  solve: euclidsAlgo,
+  getUsrAnswer,
   greetOrTryAgain,
 };
-
-function readAnswer() {
-  const answer = readlineSync.question('Your answer: ');
-  return answer;
-}
 
 function greetAndGetName() {
   console.log('Welcome To The Brain Games!');
@@ -24,12 +21,14 @@ function greetAndGetName() {
 function createTwoRandNums() {
   const a = Math.round(Math.random() * 99);
   const b = Math.round(Math.random() * 99);
+  return [a, b];
 }
 
-function formatQuestion() {
+function formatQuestionForUser(question) {
+  const [a, b] = question;
   return {
     formattedForUsr: `${a} ${b}`,
-    notFormatted: [a, b],
+    notFormatted: question,
   };
 }
 
@@ -43,36 +42,16 @@ function euclidsAlgo([a, b]) {
   return euclidsAlgo([remainder, smaller]);
 }
 
-function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
-  console.log(phrase);
+function getUsrAnswer() {
+  return readlineSync.question('Your answer: ');
 }
 
-// function askQuestions() {
-//   let counter = 0;
-//   while (counter < 3) {
-//     const question = createTwoRandNums();
-//     const expectedAnswer = euclidsAlgo(question);
-//     console.log(`Question: ${question.join(' ')}`);
-//     const userAnswer = readlineSync.question('Your answer: ');
-//     if (expectedAnswer == userAnswer) {
-//       console.log('Correct!');
-//       counter += 1;
-//       if (counter === 3) {
-//         return {
-//           result: 'won',
-//         };
-//       }
-//     } else {
-//       return {
-//         correctAns: expectedAnswer,
-//         wrongAns: userAnswer,
-//         result: 'lost',
-//       };
-//     }
-//   }
-// }
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
+}
 
 export default gcdGameData;

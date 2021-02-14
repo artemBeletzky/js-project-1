@@ -4,8 +4,8 @@ const calcGameData = {
   greetAndGetName,
   gameRules: 'What is the result of the expression?',
   createQuestion: composeExpressionStr,
-  formatQuestionStr: undefined,
-  defineExpectedAns: undefined,
+  formatQuestionForUser: undefined,
+  formatExpectedAns: undefined,
   solve: parse,
   getUsrAnswer,
   greetOrTryAgain,
@@ -26,31 +26,20 @@ function composeExpressionStr() {
   return `${randNum1} ${operations[randIndex]} ${randNum2}`;
 }
 
-// no need, delete it later
-// function formatQuestionStr(question) {
-//   return {
-//     formattedForUsr: question,
-//     notFormatted: question,
-//   };
-// }
-
-// function defineExpected(isEven) {
-//   return isEven === true ? 'yes' : 'no';
-// }
-
 function parse(str) {
+  // eslint-disable-next-line no-new-func
   return Function(`'use strict'; return (${str})`)();
 }
 
 function getUsrAnswer() {
-  const answer = readlineSync.question('Your answer: ');
-  return answer;
+  return readlineSync.question('Your answer: ');
 }
 
 function greetOrTryAgain(gameResultObj, name) {
-  const phrase = gameResultObj.result === 'won'
-    ? `Congratulations, ${name}!`
-    : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
   console.log(phrase);
 }
 

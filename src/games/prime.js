@@ -1,5 +1,31 @@
 import readlineSync from 'readline-sync';
 
+const primeGameData = {
+  greetAndGetName,
+  gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  createQuestion: createRandomNum,
+  formatQuestionForUser: undefined,
+  formatExpectedAns,
+  solve: isPrime,
+  getUsrAnswer,
+  greetOrTryAgain,
+};
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
+}
+
+function createRandomNum() {
+  return Math.ceil(Math.random() * 100);
+}
+
+function formatExpectedAns(boolean) {
+  return boolean ? 'yes' : 'no';
+}
+
 function isPrime(n) {
   if (n <= 0 || n === 1) {
     return false;
@@ -13,25 +39,16 @@ function isPrime(n) {
   return !result;
 }
 
-function prime(name, inARow = 0) {
-  if (inARow === 3) {
-    congrats(name);
-    return;
-  }
-  // excluding 0
-  const defineRandomNumber = Math.ceil(Math.random() * 100);
-  const correctAnswer = isPrime(defineRandomNumber) ? 'yes' : 'no';
-  console.log(`Question: ${defineRandomNumber}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  const result = correctAnswer === userAnswer;
-  if (result && inARow <= 2) {
-    console.log('Correct!');
-    // eslint-disable-next-line consistent-return
-    return prime(name, inARow + 1);
-  }
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${name}!`
-  );
+function getUsrAnswer() {
+  return readlineSync.question('Your answer: ');
 }
 
-export default prime;
+function greetOrTryAgain(gameResultObj, name) {
+  const phrase =
+    gameResultObj.result === 'won'
+      ? `Congratulations, ${name}!`
+      : `'${gameResultObj.wrongAns}' is wrong answer ;(. Correct answer was '${gameResultObj.correctAns}'. Let's try again, ${name}!`;
+  console.log(phrase);
+}
+
+export default primeGameData;
