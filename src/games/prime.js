@@ -1,17 +1,8 @@
-import readlineSync from 'readline-sync';
-
-function greetAndGetName() {
-  console.log('Welcome To The Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
-}
-
 function createRandomNum() {
   return Math.ceil(Math.random() * 100);
 }
 
-function formatExpectedAns(boolean) {
+function formatExpAnswer(boolean) {
   return boolean ? 'yes' : 'no';
 }
 
@@ -28,18 +19,12 @@ function isPrime(n) {
   return !result;
 }
 
-function getUsrAnswer() {
-  return readlineSync.question('Your answer: ');
-}
-
 const primeGameData = {
-  greetAndGetName,
   gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
   createQuestion: createRandomNum,
   formatQuestionForUser: undefined,
-  formatExpectedAns,
+  formatExpAnswer,
   solve: isPrime,
-  getUsrAnswer,
 };
 
 export default primeGameData;

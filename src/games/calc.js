@@ -1,12 +1,3 @@
-import readlineSync from 'readline-sync';
-
-function greetAndGetName() {
-  console.log('Welcome To The Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
-}
-
 function composeExpressionStr() {
   const randNum1 = Math.round(Math.random() * 99);
   const randNum2 = Math.round(Math.random() * 99);
@@ -20,18 +11,12 @@ function parse(str) {
   return Function(`'use strict'; return (${str})`)();
 }
 
-function getUsrAnswer() {
-  return readlineSync.question('Your answer: ');
-}
-
 const calcGameData = {
-  greetAndGetName,
   gameRules: 'What is the result of the expression?',
   createQuestion: composeExpressionStr,
-  formatQuestionForUser: undefined,
-  formatExpectedAns: undefined,
+  formatQuestionString: undefined,
+  formatExpAnswer: undefined,
   solve: parse,
-  getUsrAnswer,
 };
 
 export default calcGameData;

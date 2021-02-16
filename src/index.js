@@ -1,17 +1,26 @@
+import readlineSync from 'readline-sync';
+
+function greetAndGetName() {
+  console.log('Welcome To The Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  return name;
+}
+
 function start(gameDataObj) {
-  const name = gameDataObj.greetAndGetName();
+  const name = greetAndGetName();
   console.log(gameDataObj.gameRules);
   let counter = 0;
   while (counter < 3) {
     const question = gameDataObj.createQuestion();
-    const formattedQuestion = gameDataObj.formatQuestionForUser !== undefined
-      ? gameDataObj.formatQuestionForUser(question)
-      : question;
-    const expectedAnswer = gameDataObj.formatExpectedAns
-      ? gameDataObj.formatExpectedAns(gameDataObj.solve(question))
+    const expectedAnswer = gameDataObj.formatExpAnswer
+      ? gameDataObj.formatExpAnswer(gameDataObj.solve(question))
       : gameDataObj.solve(question);
+    const formattedQuestion = gameDataObj.formatQuestionString
+      ? gameDataObj.formatQuestionString(question)
+      : question;
     console.log(`Question: ${formattedQuestion}`);
-    const userAnswer = gameDataObj.getUsrAnswer();
+    const userAnswer = readlineSync.question('Your answer: ');
     // eslint-disable-next-line eqeqeq
     if (expectedAnswer == userAnswer) {
       console.log('Correct!');
@@ -26,5 +35,4 @@ function start(gameDataObj) {
     }
   }
 }
-
 export default start;
