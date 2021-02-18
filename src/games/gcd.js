@@ -17,10 +17,6 @@ function createQuestion() {
   };
 }
 
-function defineCorrectAnswer(q) {
-  return euclidsAlgo(q.rawData);
-}
-
 function euclidsAlgo([a, b]) {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
@@ -29,6 +25,10 @@ function euclidsAlgo([a, b]) {
     return smaller;
   }
   return euclidsAlgo([remainder, smaller]);
+}
+
+function defineCorrectAnswer(q) {
+  return euclidsAlgo(q.rawData);
 }
 
 const gcdGameData = {

@@ -2,10 +2,6 @@ function createRandomNum() {
   return Math.ceil(Math.random() * 100);
 }
 
-function defineCorrectAnswer(q) {
-  return isPrime(q.rawData) ? 'yes' : 'no';
-}
-
 function createQuestion() {
   const rawData = createRandomNum();
   return {
@@ -25,6 +21,10 @@ function isPrime(n) {
     counter -= 1;
   }
   return !result;
+}
+
+function defineCorrectAnswer(q) {
+  return isPrime(q.rawData) ? 'yes' : 'no';
 }
 
 const primeGameData = {
