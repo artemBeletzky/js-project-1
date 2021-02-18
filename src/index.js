@@ -13,13 +13,8 @@ function start(gameDataObj) {
   let counter = 0;
   while (counter < 3) {
     const question = gameDataObj.createQuestion();
-    const expectedAnswer = gameDataObj.formatExpAnswer
-      ? gameDataObj.formatExpAnswer(gameDataObj.solve(question))
-      : gameDataObj.solve(question);
-    const formattedQuestion = gameDataObj.formatQuestionString
-      ? gameDataObj.formatQuestionString(question)
-      : question;
-    console.log(`Question: ${formattedQuestion}`);
+    const expectedAnswer = gameDataObj.defineCorrectAnswer(question);
+    console.log(`Question: ${question.formatted}`);
     const userAnswer = readlineSync.question('Your answer: ');
     // eslint-disable-next-line eqeqeq
     if (expectedAnswer == userAnswer) {

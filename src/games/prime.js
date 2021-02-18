@@ -2,8 +2,16 @@ function createRandomNum() {
   return Math.ceil(Math.random() * 100);
 }
 
-function formatExpAnswer(boolean) {
-  return boolean ? 'yes' : 'no';
+function defineCorrectAnswer(q) {
+  return isPrime(q.rawData) ? 'yes' : 'no';
+}
+
+function createQuestion() {
+  const rawData = createRandomNum();
+  return {
+    rawData,
+    formatted: rawData,
+  };
 }
 
 function isPrime(n) {
@@ -21,10 +29,8 @@ function isPrime(n) {
 
 const primeGameData = {
   gameRules: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-  createQuestion: createRandomNum,
-  formatQuestionForUser: undefined,
-  formatExpAnswer,
-  solve: isPrime,
+  createQuestion,
+  defineCorrectAnswer,
 };
 
 export default primeGameData;

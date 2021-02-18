@@ -11,12 +11,22 @@ function parse(str) {
   return Function(`'use strict'; return (${str})`)();
 }
 
+function defineCorrectAnswer(q) {
+  return parse(q.rawData);
+}
+
+function createQuestion() {
+  const rawData = composeExpressionStr();
+  return {
+    rawData,
+    formatted: rawData,
+  };
+}
+
 const calcGameData = {
   gameRules: 'What is the result of the expression?',
-  createQuestion: composeExpressionStr,
-  formatQuestionString: undefined,
-  formatExpAnswer: undefined,
-  solve: parse,
+  createQuestion,
+  defineCorrectAnswer,
 };
 
 export default calcGameData;

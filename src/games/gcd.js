@@ -9,6 +9,18 @@ function formatQuestionString(question) {
   return `${a} ${b}`;
 }
 
+function createQuestion() {
+  const rawData = createTwoRandNums();
+  return {
+    rawData,
+    formatted: formatQuestionString(rawData),
+  };
+}
+
+function defineCorrectAnswer(q) {
+  return euclidsAlgo(q.rawData);
+}
+
 function euclidsAlgo([a, b]) {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
@@ -21,10 +33,8 @@ function euclidsAlgo([a, b]) {
 
 const gcdGameData = {
   gameRules: 'Find the greatest common divisor of given numbers.',
-  createQuestion: createTwoRandNums,
-  formatQuestionString,
-  formatExpAnswer: undefined,
-  solve: euclidsAlgo,
+  createQuestion,
+  defineCorrectAnswer,
 };
 
 export default gcdGameData;
