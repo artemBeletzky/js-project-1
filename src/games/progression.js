@@ -32,26 +32,17 @@ function solveProg(arr) {
     : arr[missingNumIndex + 1] - step;
 }
 
-function formatQuestionString(q) {
-  return q.join(' ');
-}
-
-function defineCorrectAnswer(q) {
-  return solveProg(q.rawData);
-}
-
-function createQuestion() {
-  const rawData = generateProg();
+function createQAndA() {
+  const q = generateProg();
   return {
-    rawData,
-    formatted: formatQuestionString(rawData),
+    q: q.join(' '),
+    a: solveProg(q).toString(),
   };
 }
 
 const progressionGameData = {
-  gameRules: 'What number is missing in the progression?',
-  createQuestion,
-  defineCorrectAnswer,
+  gameRule: 'What number is missing in the progression?',
+  getRound: createQAndA,
 };
 
 export default progressionGameData;

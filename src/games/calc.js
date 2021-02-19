@@ -11,22 +11,17 @@ function parse(str) {
   return Function(`'use strict'; return (${str})`)();
 }
 
-function defineCorrectAnswer(q) {
-  return parse(q.rawData);
-}
-
-function createQuestion() {
-  const rawData = composeExpressionStr();
+function createQAndA() {
+  const q = composeExpressionStr();
   return {
-    rawData,
-    formatted: rawData,
+    q,
+    a: parse(q).toString(),
   };
 }
 
 const calcGameData = {
-  gameRules: 'What is the result of the expression?',
-  createQuestion,
-  defineCorrectAnswer,
+  gameRule: 'What is the result of the expression?',
+  getRound: createQAndA,
 };
 
 export default calcGameData;

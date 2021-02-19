@@ -9,11 +9,11 @@ function formatQuestionString(question) {
   return `${a} ${b}`;
 }
 
-function createQuestion() {
-  const rawData = createTwoRandNums();
+function createQAndA() {
+  const q = createTwoRandNums();
   return {
-    rawData,
-    formatted: formatQuestionString(rawData),
+    q: formatQuestionString(q),
+    a: euclidsAlgo(q).toString(),
   };
 }
 
@@ -27,14 +27,9 @@ function euclidsAlgo([a, b]) {
   return euclidsAlgo([remainder, smaller]);
 }
 
-function defineCorrectAnswer(q) {
-  return euclidsAlgo(q.rawData);
-}
-
 const gcdGameData = {
-  gameRules: 'Find the greatest common divisor of given numbers.',
-  createQuestion,
-  defineCorrectAnswer,
+  gameRule: 'Find the greatest common divisor of given numbers.',
+  getRound: createQAndA,
 };
 
 export default gcdGameData;

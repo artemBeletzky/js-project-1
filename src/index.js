@@ -7,27 +7,21 @@ function greetAndGetName() {
   return name;
 }
 
-function start(gameDataObj) {
+function start(gameData) {
   const name = greetAndGetName();
-  console.log(gameDataObj.gameRules);
-  let counter = 0;
-  while (counter < 3) {
-    const question = gameDataObj.createQuestion();
-    const expectedAnswer = gameDataObj.defineCorrectAnswer(question);
-    console.log(`Question: ${question.formatted}`);
+  console.log(gameData.gameRule);
+  for (let i = 0; i < 3; i += 1) {
+    const round = gameData.getRound();
+    console.log(`Question: ${round.q}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    // eslint-disable-next-line eqeqeq
-    if (expectedAnswer == userAnswer) {
-      console.log('Correct!');
-      counter += 1;
-      if (counter === 3) {
-        console.log(`Congratulations, ${name}!`);
-        return;
-      }
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${name}!`);
+    if (round.a !== userAnswer) {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${round.a}'. Let's try again, ${name}!`
+      );
       return;
     }
+    console.log('Correct!');
   }
+  console.log(`Congratulations, ${name}!`);
 }
 export default start;
