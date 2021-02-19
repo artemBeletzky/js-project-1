@@ -28,9 +28,9 @@ function createQAndA() {
   };
 }
 
-const gcdGameData = {
+const gcd = {
   gameRule: 'Find the greatest common divisor of given numbers.',
   getRound: createQAndA,
 };
 
-export default gcdGameData;
+export default gcd;

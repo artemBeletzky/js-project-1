@@ -40,9 +40,9 @@ function createQAndA() {
   };
 }
 
-const progressionGameData = {
+const progression = {
   gameRule: 'What number is missing in the progression?',
   getRound: createQAndA,
 };
 
-export default progressionGameData;
+export default progression;

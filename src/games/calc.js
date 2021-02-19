@@ -19,9 +19,9 @@ function createQAndA() {
   };
 }
 
-const calcGameData = {
+const calc = {
   gameRule: 'What is the result of the expression?',
   getRound: createQAndA,
 };
 
-export default calcGameData;
+export default calc;

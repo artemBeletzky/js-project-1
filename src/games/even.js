@@ -18,9 +18,9 @@ function createQAndA() {
   };
 }
 
-const evenGameData = {
+const even = {
   gameRule: 'Answer "yes" if the number is even, otherwise answer "no".',
   getRound: createQAndA,
 };
 
-export default evenGameData;
+export default even;

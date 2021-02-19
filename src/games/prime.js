@@ -27,9 +27,9 @@ function createQAndA() {
   };
 }
 
-const primeGameData = {
+const prime = {
   gameRule: 'Answer "yes" if given number is prime. Otherwise answer "no".',
   getRound: createQAndA,
 };
 
-export default primeGameData;
+export default prime;
