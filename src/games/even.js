@@ -2,6 +2,10 @@ function createRandomNum() {
   return Math.ceil(Math.random() * 100);
 }
 
+function checkIfEven(number) {
+  return number % 2 === 0;
+}
+
 function formatQ(q) {
   return checkIfEven(q) ? 'yes' : 'no';
 }
@@ -12,10 +16,6 @@ function createQAndA() {
     q,
     a: formatQ(q),
   };
-}
-
-function checkIfEven(number) {
-  return number % 2 === 0;
 }
 
 const evenGameData = {
