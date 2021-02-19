@@ -9,14 +9,6 @@ function formatQuestionString(question) {
   return `${a} ${b}`;
 }
 
-function createQAndA() {
-  const q = createTwoRandNums();
-  return {
-    q: formatQuestionString(q),
-    a: euclidsAlgo(q).toString(),
-  };
-}
-
 function euclidsAlgo([a, b]) {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
@@ -25,6 +17,14 @@ function euclidsAlgo([a, b]) {
     return smaller;
   }
   return euclidsAlgo([remainder, smaller]);
+}
+
+function createQAndA() {
+  const q = createTwoRandNums();
+  return {
+    q: formatQuestionString(q),
+    a: euclidsAlgo(q).toString(),
+  };
 }
 
 const gcdGameData = {

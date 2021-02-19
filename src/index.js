@@ -16,7 +16,7 @@ function start(gameData) {
     const userAnswer = readlineSync.question('Your answer: ');
     if (round.a !== userAnswer) {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${round.a}'. Let's try again, ${name}!`
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${round.a}'. Let's try again, ${name}!`,
       );
       return;
     }
