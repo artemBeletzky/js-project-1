@@ -9,21 +9,22 @@ function formatQuestionString(question) {
   return `${a} ${b}`;
 }
 
-function euclidsAlgo([a, b]) {
+function euclidsAlgo(a, b) {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
   const remainder = bigger - smaller;
   if (remainder % smaller <= 0) {
     return smaller;
   }
-  return euclidsAlgo([remainder, smaller]);
+  return euclidsAlgo(remainder, smaller);
 }
 
 function createQAndA() {
   const q = createTwoRandNums();
+  const [a, b] = q;
   return {
     q: formatQuestionString(q),
-    a: euclidsAlgo(q).toString(),
+    a: euclidsAlgo(a, b).toString(),
   };
 }
 
