@@ -1,24 +1,24 @@
-function generateProg() {
-  const generateStart = Math.floor(Math.random() * 90);
-  const generateLength = Math.round(Math.random() * (30 - 20) + 20);
-  const generateStep = Math.ceil(Math.random() * (4 - 2) + 2);
-  const progArr = [];
+const generateProg = () => {
+  const start = Math.floor(Math.random() * 90);
+  const length = Math.round(Math.random() * (30 - 20) + 20);
+  const step = Math.ceil(Math.random() * (4 - 2) + 2);
+  const progression = [];
   for (
-    let i = generateStart;
-    i <= generateLength + generateStart;
-    i += generateStep
+    let i = start;
+    i <= length + start;
+    i += step
   ) {
-    progArr.push(i);
+    progression.push(i);
   }
-  const missingIndex = Math.floor(Math.random() * progArr.length);
-  progArr[missingIndex] = '..';
-  return progArr;
-}
+  const missingIndex = Math.floor(Math.random() * progression.length);
+  progression[missingIndex] = '..';
+  return progression;
+};
 
-function solveProg(arr) {
+const solveProg = (arr) => {
   let n1;
   let n2;
-  const missingNumIndex = arr.indexOf('..');
+  const missingNum = arr.indexOf('..');
   for (let i = 0; i < arr.length; i += 1) {
     if (typeof arr[i] === 'number' && typeof arr[i + 1] === 'number') {
       n1 = arr[i];
@@ -27,21 +27,21 @@ function solveProg(arr) {
     }
   }
   const step = n2 - n1;
-  return arr[missingNumIndex - 1]
-    ? arr[missingNumIndex - 1] + step
-    : arr[missingNumIndex + 1] - step;
-}
+  return arr[missingNum - 1]
+    ? arr[missingNum - 1] + step
+    : arr[missingNum + 1] - step;
+};
 
-function createQAndA() {
+const createQAndA = () => {
   const q = generateProg();
   return {
     q: q.join(' '),
     a: solveProg(q).toString(),
   };
-}
+};
 
 const progression = {
-  gameRule: 'What number is missing in the progression?',
+  description: 'What number is missing in the progression?',
   getRound: createQAndA,
 };
 

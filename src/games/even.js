@@ -1,25 +1,19 @@
-function createRandomNum() {
-  return Math.ceil(Math.random() * 100);
-}
+const createRandomNum = () => Math.ceil(Math.random() * 100);
 
-function checkIfEven(number) {
-  return number % 2 === 0;
-}
+const checkIfEven = (number) => number % 2 === 0;
 
-function formatQ(q) {
-  return checkIfEven(q) ? 'yes' : 'no';
-}
+const formatQ = (q) => (checkIfEven(q) ? 'yes' : 'no');
 
-function createQAndA() {
+const createQAndA = () => {
   const q = createRandomNum();
   return {
     q,
     a: formatQ(q),
   };
-}
+};
 
 const even = {
-  gameRule: 'Answer "yes" if the number is even, otherwise answer "no".',
+  description: 'Answer "yes" if the number is even, otherwise answer "no".',
   getRound: createQAndA,
 };
 

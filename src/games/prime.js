@@ -1,8 +1,6 @@
-function createRandomNum() {
-  return Math.ceil(Math.random() * 100);
-}
+const createRandomNum = () => Math.ceil(Math.random() * 100);
 
-function isPrime(n) {
+const isPrime = (n) => {
   if (n <= 0 || n === 1) {
     return false;
   }
@@ -13,22 +11,20 @@ function isPrime(n) {
     counter -= 1;
   }
   return !result;
-}
+};
 
-function formatQ(q) {
-  return isPrime(q) ? 'yes' : 'no';
-}
+const formatQ = (q) => (isPrime(q) ? 'yes' : 'no');
 
-function createQAndA() {
+const createQAndA = () => {
   const q = createRandomNum();
   return {
     q,
     a: formatQ(q),
   };
-}
+};
 
 const prime = {
-  gameRule: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  description: 'Answer "yes" if given number is prime. Otherwise answer "no".',
   getRound: createQAndA,
 };
 
