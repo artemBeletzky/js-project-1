@@ -18,7 +18,7 @@ const composeAnExpression = () => {
 
 const getRound = () => {
   const {
-    answer, operand1, operand2, operator
+    answer, operand1, operand2, operator,
   } = composeAnExpression();
   const question = `${operand1} ${operator} ${operand2}`;
   return {

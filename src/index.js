@@ -12,7 +12,7 @@ const start = (game, numOfRounds = 3) => {
     const userAnswer = readlineSync.question('Your answer: ');
     if (answer !== userAnswer) {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'. Let's try again, ${name}!`
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'. Let's try again, ${name}!`,
       );
       return;
     }
