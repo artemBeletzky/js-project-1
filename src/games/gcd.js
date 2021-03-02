@@ -19,18 +19,18 @@ const euclidsAlgo = (a, b) => {
   return euclidsAlgo(remainder, smaller);
 };
 
-const createQAndA = () => {
-  const q = createTwoRandNums();
-  const [a, b] = q;
+const getRound = () => {
+  const question = createTwoRandNums();
+  const [a, b] = question;
   return {
-    q: formatQuestionString(q),
-    a: euclidsAlgo(a, b).toString(),
+    question: formatQuestionString(question),
+    answer: euclidsAlgo(a, b).toString(),
   };
 };
 
 const gcd = {
   description: 'Find the greatest common divisor of given numbers.',
-  getRound: createQAndA,
+  getRound,
 };
 
 export default gcd;

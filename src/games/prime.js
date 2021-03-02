@@ -15,17 +15,17 @@ const isPrime = (n) => {
 
 const formatQ = (q) => (isPrime(q) ? 'yes' : 'no');
 
-const createQAndA = () => {
-  const q = createRandomNum();
+const getRound = () => {
+  const question = createRandomNum();
   return {
-    q,
-    a: formatQ(q),
+    question,
+    answer: formatQ(question),
   };
 };
 
 const prime = {
   description: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-  getRound: createQAndA,
+  getRound,
 };
 
 export default prime;

@@ -3,11 +3,7 @@ const generateProg = () => {
   const length = Math.round(Math.random() * (30 - 20) + 20);
   const step = Math.ceil(Math.random() * (4 - 2) + 2);
   const progression = [];
-  for (
-    let i = start;
-    i <= length + start;
-    i += step
-  ) {
+  for (let i = start; i <= length + start; i += step) {
     progression.push(i);
   }
   const missingIndex = Math.floor(Math.random() * progression.length);
@@ -32,17 +28,17 @@ const solveProg = (arr) => {
     : arr[missingNum + 1] - step;
 };
 
-const createQAndA = () => {
-  const q = generateProg();
+const getRound = () => {
+  const question = generateProg();
   return {
-    q: q.join(' '),
-    a: solveProg(q).toString(),
+    question: question.join(' '),
+    answer: solveProg(question).toString(),
   };
 };
 
 const progression = {
   description: 'What number is missing in the progression?',
-  getRound: createQAndA,
+  getRound,
 };
 
 export default progression;

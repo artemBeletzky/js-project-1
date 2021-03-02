@@ -1,25 +1,35 @@
-const composeExpressionStr = () => {
-  const randNum1 = Math.round(Math.random() * 99);
-  const randNum2 = Math.round(Math.random() * 99);
-  const operations = ['+', '-', '*'];
-  const randIndex = Math.floor(Math.random() * 3);
-  return `${randNum1} ${operations[randIndex]} ${randNum2}`;
+const composeAnExpression = () => {
+  const num1 = Math.round(Math.random() * 99);
+  const num2 = Math.round(Math.random() * 99);
+  const operators = ['+', '-', '*'];
+  const operation = operators[Math.floor(Math.random() * 3)];
+  const performOperation = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '*': (a, b) => a * b,
+  };
+  return {
+    answer: performOperation[operation](num1, num2),
+    operand1: num1,
+    operand2: num2,
+    operator: operation,
+  };
 };
 
-// eslint-disable-next-line no-new-func
-const parse = (str) => Function(`'use strict'; return (${str})`)();
-
-const createQAndA = () => {
-  const q = composeExpressionStr();
+const getRound = () => {
+  const {
+    answer, operand1, operand2, operator
+  } = composeAnExpression();
+  const question = `${operand1} ${operator} ${operand2}`;
   return {
-    q,
-    a: parse(q).toString(),
+    question,
+    answer: answer.toString(),
   };
 };
 
 const calc = {
   description: 'What is the result of the expression?',
-  getRound: createQAndA,
+  getRound,
 };
 
 export default calc;
