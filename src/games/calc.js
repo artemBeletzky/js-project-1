@@ -1,6 +1,7 @@
+import generateRandomNum from './utilities.js';
+
 const composeAnExpression = () => {
-  const num1 = Math.round(Math.random() * 99);
-  const num2 = Math.round(Math.random() * 99);
+  const [num1, num2] = generateRandomNum();
   const operators = ['+', '-', '*'];
   const operation = operators[Math.floor(Math.random() * 3)];
   const performOperation = {

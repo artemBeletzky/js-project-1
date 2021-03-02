@@ -1,13 +1,9 @@
-const createTwoRandNums = () => {
-  const a = Math.round(Math.random() * 99);
-  const b = Math.round(Math.random() * 99);
-  return [a, b];
-};
+import generateRandomNum from './utilities.js';
 
-const formatQuestionString = (question) => {
-  const [a, b] = question;
-  return `${a} ${b}`;
-};
+// const formatQuestionString = (question) => {
+//   const [a, b] = question;
+//   return `${a} ${b}`;
+// };
 
 const euclidsAlgo = (a, b) => {
   const bigger = a > b ? a : b;
@@ -20,10 +16,10 @@ const euclidsAlgo = (a, b) => {
 };
 
 const getRound = () => {
-  const question = createTwoRandNums();
-  const [a, b] = question;
+  // const question = createTwoRandNums();
+  const [a, b] = generateRandomNum();
   return {
-    question: formatQuestionString(question),
+    question: `${a} ${b}`,
     answer: euclidsAlgo(a, b).toString(),
   };
 };

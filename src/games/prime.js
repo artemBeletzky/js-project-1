@@ -1,4 +1,4 @@
-const createRandomNum = () => Math.ceil(Math.random() * 100);
+import generateRandomNum from './utilities.js';
 
 const isPrime = (n) => {
   if (n <= 0 || n === 1) {
@@ -16,7 +16,7 @@ const isPrime = (n) => {
 const formatQ = (q) => (isPrime(q) ? 'yes' : 'no');
 
 const getRound = () => {
-  const question = createRandomNum();
+  const [question] = generateRandomNum();
   return {
     question,
     answer: formatQ(question),
