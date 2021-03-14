@@ -1,4 +1,4 @@
-//The maximum is inclusive and the minimum is inclusive
+// The maximum is inclusive and the minimum is inclusive
 const generateRandomNum = (minNum, maxNum) => {
   const min = Math.ceil(minNum);
   const max = Math.floor(maxNum);
