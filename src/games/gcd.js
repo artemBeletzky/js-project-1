@@ -1,26 +1,21 @@
-import generateRandomNum from './utilities.js';
+import generateRandomNum from '../utilities.js';
 
-// const formatQuestionString = (question) => {
-//   const [a, b] = question;
-//   return `${a} ${b}`;
-// };
-
-const euclidsAlgo = (a, b) => {
+const findGcd = (a, b) => {
   const bigger = a > b ? a : b;
   const smaller = a < b ? a : b;
   const remainder = bigger - smaller;
   if (remainder % smaller <= 0) {
     return smaller;
   }
-  return euclidsAlgo(remainder, smaller);
+  return findGcd(remainder, smaller);
 };
 
 const getRound = () => {
-  // const question = createTwoRandNums();
-  const [a, b] = generateRandomNum();
+  const a = generateRandomNum(1, 100);
+  const b = generateRandomNum(1, 100);
   return {
     question: `${a} ${b}`,
-    answer: euclidsAlgo(a, b).toString(),
+    answer: findGcd(a, b).toString(),
   };
 };
 

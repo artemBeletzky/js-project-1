@@ -1,19 +1,20 @@
-import generateRandomNum from './utilities.js';
+import generateRandomNum from '../utilities.js';
 
 const composeAnExpression = () => {
-  const [num1, num2] = generateRandomNum();
-  const operators = ['+', '-', '*'];
-  const operation = operators[Math.floor(Math.random() * 3)];
+  const operand1 = generateRandomNum(1, 100);
+  const operand2 = generateRandomNum(1, 100);
   const performOperation = {
     '+': (a, b) => a + b,
     '-': (a, b) => a - b,
     '*': (a, b) => a * b,
   };
+  const operators = Object.keys(performOperation);
+  const operator = operators[generateRandomNum(0, operators.length - 1)];
   return {
-    answer: performOperation[operation](num1, num2),
-    operand1: num1,
-    operand2: num2,
-    operator: operation,
+    operand1,
+    operand2,
+    operator,
+    answer: performOperation[operator](operand1, operand2),
   };
 };
 

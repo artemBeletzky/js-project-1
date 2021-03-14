@@ -1,14 +1,12 @@
-import generateRandomNum from './utilities.js';
+import generateRandomNum from '../utilities.js';
 
-const checkIfEven = (number) => number % 2 === 0;
-
-const formatAns = (q) => (checkIfEven(q) ? 'yes' : 'no');
+const isEven = (number) => number % 2 === 0;
 
 const getRound = () => {
-  const [question] = generateRandomNum();
+  const question = generateRandomNum(1, 100);
   return {
     question,
-    answer: formatAns(question),
+    answer: isEven(question) ? 'yes' : 'no',
   };
 };
 

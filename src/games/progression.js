@@ -1,38 +1,27 @@
+import generateRandomNum from '../utilities.js';
+
 const generateProg = () => {
-  const start = Math.floor(Math.random() * 90);
-  const length = Math.round(Math.random() * (30 - 20) + 20);
-  const step = Math.ceil(Math.random() * (4 - 2) + 2);
+  const start = generateRandomNum(0, 90);
+  const length = generateRandomNum(20, 30);
+  const step = generateRandomNum(2, 5);
   const progression = [];
-  for (let i = start; i <= length + start; i += step) {
+  for (let i = start; i <= start + length; i += step) {
     progression.push(i);
   }
-  const missingIndex = Math.floor(Math.random() * progression.length);
+  const missingIndex = generateRandomNum(0, progression.length - 1);
+  const answer = progression[missingIndex].toString();
   progression[missingIndex] = '..';
-  return progression;
-};
-
-const solveProg = (arr) => {
-  let n1;
-  let n2;
-  const missingNum = arr.indexOf('..');
-  for (let i = 0; i < arr.length; i += 1) {
-    if (typeof arr[i] === 'number' && typeof arr[i + 1] === 'number') {
-      n1 = arr[i];
-      n2 = arr[i + 1];
-      break;
-    }
-  }
-  const step = n2 - n1;
-  return arr[missingNum - 1]
-    ? arr[missingNum - 1] + step
-    : arr[missingNum + 1] - step;
+  return {
+    question: progression,
+    answer,
+  };
 };
 
 const getRound = () => {
-  const question = generateProg();
+  const { question, answer } = generateProg();
   return {
     question: question.join(' '),
-    answer: solveProg(question).toString(),
+    answer,
   };
 };
 
