@@ -1,33 +1,39 @@
 import generateRandomNum from '../utilities.js';
+import start from '../index.js';
 
-const generateProg = () => {
-  const start = generateRandomNum(0, 90);
-  const length = generateRandomNum(20, 30);
-  const step = generateRandomNum(2, 5);
+const generateProg = (startNum = 0, step = 2, length = 10) => {
   const progression = [];
-  for (let i = start; i <= start + length; i += step) {
-    progression.push(i);
+  for (let i = 0; i < length; i += 1) {
+    if (progression.length === 0) {
+      progression.push(startNum);
+    } else {
+      progression.push(progression[i - 1] + step);
+    }
   }
-  const missingIndex = generateRandomNum(0, progression.length - 1);
-  const answer = progression[missingIndex].toString();
-  progression[missingIndex] = '..';
-  return {
-    question: progression,
-    answer,
-  };
+  return progression;
 };
 
 const getRound = () => {
-  const { question, answer } = generateProg();
+  const startNum = generateRandomNum(0, 50);
+  const step = generateRandomNum(2, 7);
+  const length = generateRandomNum(5, 15);
+  const progression = generateProg(startNum, step, length);
+  const hiddenIndex = generateRandomNum(0, progression.length - 1);
+  const answer = progression[hiddenIndex].toString();
+  progression[hiddenIndex] = '..';
+  const question = progression.join(' ');
   return {
-    question: question.join(' '),
+    question,
     answer,
   };
 };
 
-const progression = {
-  description: 'What number is missing in the progression?',
-  getRound,
+const progression = () => {
+  const data = {
+    description: 'What number is missing in the progression?',
+    getRound,
+  };
+  start(data);
 };
 
 export default progression;
